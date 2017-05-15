@@ -1,0 +1,89 @@
+mkdir learngit  创建文件夹
+cd learngit   进入learngit
+pwd    		显示当前路径
+
+git init   把这个目录变成Git可以管理的仓库
+Initialized empty Git repository in /Users/michael/learngit/.git/
+
+git add readme.txt  把文件添加到仓库
+git commit -m "wrote a readme file"  把文件提交到仓库
+[master (root-commit) cb926e7] wrote a readme file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 readme.txt
+ 
+ git status  查看结果,有没有待上传的
+ git diff readme.txt   查看修改记录
+ 
+ git log   查看修改日志
+ git log --pretty=online   简化显示修改日志
+ 
+ git reset --hard HEAD^   退回到上一个版本
+ git reset --hard 2d8d224   返回之前的版本（版本号不需要写全）
+ cat readme.txt     查看内容
+ 
+ git diff HEAD -- readme.txt  可以查看工作区和版本库里面最新版的区别
+ git checkout -- readme.txt   返回上次修改时候的状态(没添加到缓冲区之前)
+ git reset HEAD readme.txt   返回上次修改时候的状态（已经添加到缓冲区，但是还没有上传）
+ git checkout -- readme.txt (与上一步一块连用)
+ 
+ rm test.txt   删除文件操作
+ git rm test.txt
+ git commit -m "rmove test.txt"
+ git checkout -- test.txt  误删
+ 
+ git remote add origin git@github.com:Tactful-biao/learngit.git
+ git push -u origin master  第一次关联本地仓库到远程
+ git push origin master 
+ 
+ git clone git@github:Tactful-biao/gitskills  从远程仓库克隆
+ 
+ git checkout -b dev  创建分支并切换分支dev(相当于下面两条命令)
+ git branch dev 创建分支
+ git checkout dev  切换分支
+ 
+ git checkout master  切换为master分支
+ git merge dev    把dev分支的工作成果合并到master分支上
+ 
+ git branch -d dev  合并之后，就可以把dev删除了
+ git branch -D dev   强制删除
+ git branch   查看当前有哪些分支
+ 
+ git log --graph --pretty=online --abbrev-commit   查看分支的合并情况
+ git merge --no-ff -m "" dev  准备合并dev分支，--no-ff参数表示禁用Fast forward
+ git stash  保存现有状态
+ git stash list  查看已保存的状态
+ git stash pop    恢复stash的内容并删除
+ 
+ git remote   查看远程库的信息
+ git remote -v    查看更详细的信息
+ 
+ git push origin master  把分支推送到远程仓库
+ git branch --set-upstream dev origin/dev   指定本地dev分支与origin/dev分支的链接
+ 
+ git pull   下载到本地
+ 
+ git tag v1.0   创建标签命令
+ git tag       查看标签命令
+ 
+ git log --pretty=online --abbrev-commit
+ git tag v0.9 commit号      对之前的修改做标签，在创建的标签后面加上它的commit号就可以了
+ git show v0.9  查看v0.9修改内容
+ git tag 0.1 -m "说明" commit号  添加说明
+ git tag -s v0.2 -m "说明" commit号   通过私钥签名一个标签
+ 
+ git tag -d v0.1  删除标签
+ git push tag origin v1.0   把某个标签推送到远程
+ git push origin --tags   把所有的标签全部推送到远程
+ git push origin :refs/tags/v1.0  删除远程的标签
+ 
+ git config --global color.ui true   让git显示颜色
+ 
+ git config --global alias.co checkout   把checkout命令用codaiti 
+ git config --global alias.unstage 'reset HEAD'  
+ git config --global alias.last 'log -1'   用git last 查看最近一次提交信息
+ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+ 
+ 
+ 
+ 
+ 
